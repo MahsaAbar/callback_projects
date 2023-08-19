@@ -26,13 +26,43 @@ let result4 = count(['follow', 'the', 'yellow', 'brick', 'road'], function (str)
 console.log(result4); // 0
 *******************************************************************************/
 
-let count = function() {
-
+let count = function(array, cb) {
+    let newArray= [];
+    array.filter(function(el) {
+        if(cb(el)){
+            newArray.push(el)
+        }
+    })
+    // for(i=0; i<array.length; i++){
+    //     let el= array[i];
+    //     if(cb(el)){
+    //         newArray.push(el)
+    //     }
+    // }
+    return newArray.length
 };
 
 
 
+let result1 = count([18, 5, 32, 7, 100], function (n) {
+    return n % 2 === 0;
+});
+console.log(result1); // 3
 
+let result2 = count([17, 5, 31, 7, 100], function (n) {
+    return n % 2 === 0;
+});
+console.log(result2); // 1
+
+let result3 = count(['follow', 'the', 'yellow', 'brick', 'road'], function (str) {
+    return str.includes('o');
+});
+console.log(result3); // 3
+
+let result4 = count(['follow', 'the', 'yellow', 'brick', 'road'], function (str) {
+    return str.includes('x');
+});
+console.log(result4); // 0
 
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/

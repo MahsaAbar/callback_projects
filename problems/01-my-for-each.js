@@ -21,10 +21,20 @@ myForEach(['laika', 'belka'], function (el) {
 console.log(test); // ['LAIKA', 'BELKA']
 *******************************************************************************/
 
-let myForEach = function() {
-
+let myForEach = function(array, cb) {
+    let test = [];
+    for(i=0; i<array.length; i++){
+        let el = array[i];
+        test.push(cb(el, i , array))
+    }
+    return test
 };
-
+// let test = [];
+let test = myForEach(['laika', 'belka'], function (el) {
+    // test.push(el.toUpperCase());
+    return el.toUpperCase()
+});
+console.log(test); // ['LAIKA', 'BELKA']
 
 
 

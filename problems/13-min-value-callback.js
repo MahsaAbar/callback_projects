@@ -9,13 +9,40 @@ console.log(minValueCallback([64, 25, 49, 9, 100]));             // 9
 console.log(minValueCallback([64, 25, 49, 9, 100], Math.sqrt));  // 3
 
 *******************************************************************************/
+let minvalue = function(arr){
+    let min = arr[0];
+    arr.filter(function(ele){
+        if(ele < min){
+            min = ele
+        }
+    })
+    // for(i=1; i<arr.length; i++){
+    //     let ele = arr[i];
+    //     if(ele < min){
+    //         min = ele
+    //     }
+    // }
+    return min
+};
 
-let minValueCallback = function() {
+let minValueCallback = function(array, cb) {
+    if(cb !== undefined){
+        let newArray = [];
+        for(j=0; j<array.length; j++){
+            let el = array[j];
+            newArray.push(cb(el))
+        }
+        return (minvalue(newArray))
+
+    }else{
+        return minvalue(array)
+    }
 
 };
 
 
-
+console.log(minValueCallback([64, 25, 49, 9, 100]));             // 9
+console.log(minValueCallback([64, 25, 49, 9, 100], Math.sqrt));  // 3
 
 
 

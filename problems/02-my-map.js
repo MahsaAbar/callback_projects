@@ -16,11 +16,22 @@ let result2 = myMap(['run', 'Forrest'], function (el) {
 console.log(result2);   // [ 'RUN!', 'FORREST!' ]
 *******************************************************************************/
 
-let myMap = function() {
-
+let myMap = function(array, cb) {
+    let newArray = [];
+    array.forEach(function(el) {
+        newArray.push(cb(el))
+    })
+    // for (i=0; i<array.length; i++){
+    //     let el = array[i];
+    //     newArray.push(cb(el));
+    // }
+        return newArray
 };
 
-
+let result2 = myMap(['run', 'Forrest'], function (el) {
+    return el.toUpperCase() + '!';
+});
+console.log(result2);   // [ 'RUN!', 'FORREST!' ]
 
 
 
